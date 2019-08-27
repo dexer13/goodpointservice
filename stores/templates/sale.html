@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Registrar promoción{% endblock title %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 m-auto pt-2 pb-2">
+            <div style="border: solid 1px #e8e8e8;  border-radius: 15px">
+                <div class="p-2" style="background-color: #e8e8e8; border-radius: 15px 15px 0px 0px;">
+                    <h2 class="text-center font-weight-bold">Registrar promoción</h2>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                          {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div style="margin: 20px">
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-condensed">
+                                <tbody>
+                                <tr>
+                                    <td>Encabezado</td>
+                                    <td>{{ form.encabazado }}
+                                        {{ form.encabezado.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha de inicio</td>
+                                    <td class="">
+                                        {{ form.fecha_inicio }}
+                                        {{ form.fecha_inicio.errors }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha final</td>
+                                    <td>
+                                        {{ form.fecha_fin }}
+                                        {{ form.fecha_fin.errors }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Imagen</td>
+                                    <td>{{ form.foto }}
+                                        {{ forms.foto.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Descripción</td>
+                                    <td>{{ form.descripcion }}
+                                        {{ forms.descripcion.errors }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tienda</td>
+                                    <td>{{ form.tienda }}
+                                        {{ forms.tienda.errors }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                            <button type="submit" value="guardar" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Guardar</button>
+                    </form>
+                    <br>
+                    <p class="text-center">Para registrar tienda presione click <span><a href="{% url 'create_store' %}">aquí</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(function () {
+                $('#id_fecha_inicio').datetimepicker();
+            });
+        $(function () {
+                $('#id_fecha_fin').datetimepicker();
+            });
+    </script>
+{% endblock scripts %}

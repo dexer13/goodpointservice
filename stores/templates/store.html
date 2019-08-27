@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Registrar tienda{% endblock title %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 m-auto pt-2 pb-2">
+            <div style="border: solid 1px #e8e8e8;  border-radius: 15px">
+                <div class="p-2" style="background-color: #e8e8e8; border-radius: 15px 15px 0px 0px;">
+                    <h2 class="text-center font-weight-bold">Registrar tienda</h2>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                          {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div style="margin: 20px">
+                 <form action="" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                     <div class="table-responsive">
+                         <table class="table table-borderless table-condensed">
+                             <tbody>
+                             <tr>
+                                 <td>Nombre</td>
+                                 <td>{{ form.nombre }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Logo</td>
+                                 <td>{{ form.logo }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Correo</td>
+                                 <td>{{ form.correo }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Teléfono</td>
+                                 <td>{{ form.telefono }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Facebook</td>
+                                 <td>{{ form.facebook }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Twitter</td>
+                                 <td>{{ form.twitter }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Direccion</td>
+                                 <td>{{ form.direccion }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Latitud</td>
+                                 <td>{{ form.latitud }}</td>
+                             </tr>
+                             <tr>
+                                 <td>Longitud</td>
+                                 <td>{{ form.longitud }}</td>
+                             </tr>
+                             </tbody>
+                         </table>
+                     </div>
+                     <p class="text-center">Para obetener las coordenadas use
+                        <a href="http://www.bufa.es/google-maps-latitud-longitud/" target="_blank">bufa</a>
+                    </p>
+                 <br>
+                            <button type="submit" value="guardar" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Guardar</button>
+                    </form>
+                    <br>
+                    <p class="text-center">Para registrar promoción presione click <span><a href="{% url 'create_sale' %}">aquí</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
